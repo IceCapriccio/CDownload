@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>掩耳下载中心</title>
+     <!-- <script src="./assert/1.js"></script> -->
+	<link rel="stylesheet" id="dashicons-css" href="static/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="buttons-css" href="static/buttons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="forms-css" href="static/forms.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="l10n-css" href="static/l10n.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="login-css" href="static/login.min.css" type="text/css" media="all">
+<style type="text/css">
+body{
+	font-family: "Microsoft YaHei", Helvetica, Arial, Lucida Grande, Tahoma, sans-serif;
+	background: url(static/22.jpg);
+	width:100%;
+	height:100%;
+}
+.login h1 a {
+	background:url(static/555.png) no-repeat;
+	background-size: 220px 50px;
+	width: 220px;
+	height: 50px;
+	padding: 0;
+	margin: 0 auto 1em;
+}
+.login form, .login .message {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.6);
+	border-radius: 2px;
+	border: 1px solid #fff;
+}
+.login label {
+	color: #000;
+	font-weight: bold;
+}
+.login .message {
+	color: #000;
+}
+#backtoblog a, #nav a {
+	color: #fff !important;
+}
+input.invalid {
+	background-color: #FF9;
+	border: 2px red inset;
+}
+ 
+label.invalid {
+	color: #F00;
+	font-weight: bold;
+}
+</style>	<meta name="robots" content="noindex,noarchive">
+	<meta name="referrer" content="strict-origin-when-cross-origin">
+		<meta name="viewport" content="width=device-width">
+		<style type="text/css"> a[data-v-11b2e33f] { cursor: pointer; } </style></head>
+	<body class="login login-action-login wp-core-ui  locale-zh-cn">
+		<div id="login">
+		<h1><a href="axuhongbo.top/kami" title="欢迎您光临本站！" tabindex="-1">欢迎您光临本站！</a></h1>
+	
+<!-- <form name="loginform" id="loginform" action="https://imac.hk/wp-login.php" method="post"> -->
+	<!-- <p> -->
+		<!-- <label for="user_login">用户名或电子邮件地址<br> -->
+		<!-- <input type="text" name="log" id="user_login" class="input" value="" size="20"></label> -->
+	<!-- </p> -->
+	<!-- <p> -->
+		<!-- <label for="user_pass">密码<br> -->
+		<!-- <input type="password" name="pwd" id="user_pass" class="input" value="" size="20"></label> -->
+	<!-- </p> -->
+		<!-- <p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever"> 记住我的登录信息</label></p> -->
+	<!-- <p class="submit"> -->
+		<!-- <input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="登录"> -->
+		<!-- <input type="hidden" name="redirect_to" value="https://imac.hk/macos-mojave-10-14-18a391-clover-install.html"> -->
+		<!-- <input type="hidden" name="testcookie" value="1"> -->
+	<!-- </p> -->
+<!-- </form> -->
+<form  action="/solve_register" method="post" onsubmit="return checkIP();" name="ipform">
+        {% csrf_token %}
+        <label for="id">账号：<input type="text" name="id" id="id" class="input"></label> <br/>
+        <label for="password">密码：<input type="password" name="password" id="password" class="input"></label> <br/>
+		<label for="password">请再次输入密码：<input type="password" name="password2" id="password2" class="input"></label> <br/>
+        <label for="email">邮箱：<input type="text" name="email" id="email" class="input"></label> <br/>
+        <p><input type="submit" class="button button-primary button-large"> 
+		<input type="reset" class="button button-large"></p>
+    </form>
+
+<script type="text/javascript">
+function checkIP(){//js表单验证方法
+   var text=document.getElementById("id").value;//通过id获取需要验证的表单元素的值
+    var text2=document.getElementById("password").value;//通过id获取需要验证的表单元素的值
+	 var text3=document.getElementById("password2").value;//通过id获取需要验证的表单元素的值
+	  var text4=document.getElementById("email").value;//通过id获取需要验证的表单元素的值
+	  　　var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+
+   if(text==""||text2==""||text3==""||text4==""){//当上面获取的值为空时
+     alert("注意填写不能为空哦！");//弹出提示
+     return false;//返回false（不提交表单）
+   }
+   else if(text2!=text3){
+     alert("注意两次输入密码要一致哦！");//弹出提示
+     return false;//返回false（不提交表单）
+ 
+   }
+   else if(!reg.test(email.value)){
+   alert("请注意邮箱格式！");//弹出提示
+     return false;//返回false（不提交表单）
+   }
+
+
+   return true;//提交表单
+}
+</script>
+            <script>
+                 // TODO cookie 判断是否有 msg
+                function getCookie(name)
+                {
+                    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+                    if(arr=document.cookie.match(reg))
+                        return unescape(arr[2]);
+                    else
+                        return null;
+                }
+                // 删除cookies
+                function delCookie(name)
+                {
+                    var exp = new Date();
+                    exp.setTime(exp.getTime() - 1);
+                    var cval=getCookie(name);
+                    if(cval!=null)
+                        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+                }
+                window.onload = function () {
+                    msg = getCookie('msg');
+                    if (msg != null) {
+                        alert(msg);
+                        delCookie('msg')
+                    } else {
+                        console.log('no msg')
+                    }
+                }
+            </script>
+<!-- <script type="text/javascript">
+function wp_attempt_focus(){
+setTimeout( function(){ try{
+d = document.getElementById('user_login');
+d.focus();
+d.select();
+} catch(e){}
+}, 200);
+}
+
+wp_attempt_focus();
+if(typeof wpOnload=='function')wpOnload();
+</script> -->
+
+  <br>
+	<div align="left">
+	
+					<span id="backtoblog" style="text-align: right;"><a href="http://axuhongbo.top/yaner"  >← 主页</a></span>
+			</div>
+    <div align="left">
+	    <span id="backtoblog"><a href="/login">← 会员登录</a></span>
+
+    </div>
+
+	</div>
+
+	
+		<div class="clear"></div>
+	
+	
+	</body><div id="__genieContainer" style="all: initial;"></div></html>
