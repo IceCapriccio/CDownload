@@ -19,7 +19,9 @@ def solve_register(request):
     query = Account.objects.filter(id=id)
     if len(query) == 0:
         # 账号之前未被注册，Account 表中插入数据
-        Account(id=id, password=b64encode(id), free=True, email=email).save()
+        obj = Account(id=id, password=b64encode(id), free=True, email=email)
+        obj.save()
+        DownloadTimes(id=obj, times=0).save()
         # 注册成功直接跳转登录界面，并发送 cookie
         response = render(request, 'download.html')
         response.set_cookie('id', id, max_age=600)  # cookie 存在 10 分钟
@@ -81,7 +83,9 @@ def download(request):
     if request.COOKIES.get('id') is None:
         return render(request, 'login.html')
     id = request.COOKIES['id']
+    print('download, id=', id)
     download_times = DownloadTimes.objects.get(id=id).times
+    print(locals())
     return render(request, 'download.html', locals())
 
 
