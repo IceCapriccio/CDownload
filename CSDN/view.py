@@ -34,11 +34,7 @@ def solve_register(request):
 
 def login(request):
     if request.COOKIES.get('id', None) is not None:
-        id = request.COOKIES['id']
-        times = DownloadTimes.objects.get(id=Account.objects.get(id=id)).times
-        context = {'id': id, 'download_times': times}
-        response = render(request, 'download.html', context=context)
-        return response
+        return HttpResponseRedirect('/download')
     return render(request, 'login.html')
 
 
@@ -83,14 +79,12 @@ def download(request):
     if request.COOKIES.get('id') is None:
         return render(request, 'login.html')
     id = request.COOKIES['id']
-    print('download, id=', id)
     download_times = DownloadTimes.objects.get(id=id).times
-    print(locals())
     return render(request, 'download.html', locals())
 
 
 def solve_download(request):
-    # print('solve download cookies:', request.COOKIES).
+    # print('solve download cookies:', request.COOKIES)
     # 下载到本地的路径
     local_path = '/var/www/html/down/files'
 
@@ -104,7 +98,9 @@ def solve_download(request):
     act_obj = Account.objects.get(id=id)
     isfree = act_obj.free
     if times <= 0 and not isfree:
-        return HttpResponse('次数不足')
+        response = HttpResponseRedirect('/download')
+        response.set_cookie('msg', 'download times Insufficient!')
+        return response
 
     # 从 CSDN 账号池中选择一个账号
     accounts = CSDN_VIP_Account.objects.filter(today_use_times__lt=F("today_use_limit"))

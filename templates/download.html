@@ -70,7 +70,7 @@ body{
     <label><p>剩余下载次数：{{ download_times }}</p> <br></label>
     {% csrf_token %}
     <label>下载地址：<input type="text" name="url" class="input"></label>
-    <input type="submit" class="button button-primary button-large">
+    <input type="submit" onclick="window.location.reload()" class="button button-primary button-large">
 </form>
 
 
@@ -91,12 +91,10 @@ if(typeof wpOnload=='function')wpOnload();
 function checkIP(){//js表单验证方法
 
 	 alert("提交成功，正在下载......");//弹出提示
-    // TODO xhb你是傻逼吗，不验证直接下载？
    return true;//提交表单
 }
 </script>
             <script>
-                 // TODO cookie 判断是否有 msg
                 function getCookie(name)
                 {
                     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
