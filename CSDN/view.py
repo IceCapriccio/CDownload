@@ -118,7 +118,7 @@ def solve_download(request):
 
     # 下载文件
     url = request.POST['url']
-    # TODO url 不合法
+    print('url:', url)
     # https://download.csdn.net/download/weixin_44174032/10861867
     if not url.startswith('https://download.csdn.net/download/'):
         response = HttpResponseRedirect('/download')
@@ -162,7 +162,6 @@ def recharge(request):
         return render(request, 'login.html')
     id = request.COOKIES['id']
     download_times = DownloadTimes.objects.get(id=id).times
-    print(locals())
     return render(request, 'recharge.html', locals())
 
 
