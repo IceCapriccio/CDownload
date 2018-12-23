@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # csdn 数据库
-    'DB',
+    'DATA',
 
     # admin 界面优化
     'bootstrap_admin',
@@ -115,10 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -142,4 +138,4 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(HERE, 'static'),
 )
-STATIC_ROOT = 'static'
+

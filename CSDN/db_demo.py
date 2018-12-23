@@ -1,10 +1,10 @@
 from django.http import HttpResponse
-from DB.models import Account, DownloadTimes, DownloadLog, DbKm
+from DATA.models import Account, DownloadTimes, DownloadLog, Km
 from django.shortcuts import render
 
 
 def testdb(request):
-    print(DbKm.objects.all())
+    print(Km.objects.all())
     return HttpResponse('success')
 
 

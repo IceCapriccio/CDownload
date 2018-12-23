@@ -35,6 +35,6 @@ urlpatterns = [
     url(r'^solve_update', db_demo.solve_update),
     url(r'^recharge$', view.recharge),
     url(r'^solve_recharge$', view.solve_recharge),
-    url(r'^static/(?P<path>.*)$', static.serve,{'document_root': settings.STATIC_ROOT}, name='static'),
+    url(r'^static/(?P<path>.*)$', static.serve, {'document_root': settings.STATIC_ROOT}, name='static'),
 ]
 

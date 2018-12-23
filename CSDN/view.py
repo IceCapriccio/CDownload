@@ -1,11 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response, redirect
-from DB.models import Account, DownloadLog, DownloadTimes, CSDN_VIP_Account, DbKm
+from DATA.models import Account, DownloadLog, DownloadTimes, CSDN_Vip_Account, Km
 from django.db.models import F
 from .downloader import CsdnDownloader
 import base64 as b
 from random import randint
-import DB.models
 
 
 def register(request):
@@ -19,7 +18,7 @@ def solve_register(request):
     query = Account.objects.filter(id=id)
     if len(query) == 0:
         # 账号之前未被注册，Account 表中插入数据
-        obj = Account(id=id, password=b64encode(id), free=True, email=email)
+        obj = Account(id=id, password=b64encode(id), permission='user', free=True, email=email)
         obj.save()
         DownloadTimes(id=obj, times=0).save()
         # 注册成功直接跳转登录界面，并发送 cookie
@@ -103,7 +102,7 @@ def solve_download(request):
         return response
 
     # 从 CSDN 账号池中选择一个账号
-    accounts = CSDN_VIP_Account.objects.filter(today_use_times__lt=F("today_use_limit"))
+    accounts = CSDN_Vip_Account.objects.filter(today_use_times__lt=F("today_use_limit"))
     if len(accounts) == 0:
         # 没有可用账号
         return HttpResponse("出现了一点问题呢，请联系管理员~")
@@ -143,7 +142,7 @@ def solve_download(request):
             obj.save()
 
             # 增加下载记录
-            DownloadLog(id=act_obj, url=url).save()
+        DownloadLog(username=account, url=url).save()
         return response
     response = HttpResponseRedirect('/download')
     response.set_cookie('msg', 'download failed, please contact with administrator!')
@@ -175,7 +174,7 @@ def solve_recharge(request):
     key = request.POST['key']
 
     # 先根据 key 找到商品的 gid
-    flt_lst = DbKm.objects.filter(km=key)
+    flt_lst = Km.objects.filter(km=key)
     if len(flt_lst) == 0:
         # 卡密无效
         response = HttpResponseRedirect('/download')
@@ -189,9 +188,9 @@ def solve_recharge(request):
 
     # 增加表中的账户的下载次数
     times = DownloadTimes.objects.get(id=id).times
-    DownloadTimes.objects.filter(id=id).update(times=times+add_times)
+    DownloadTimes.objects.filter(id=id).update(times=times + add_times)
     # 用完的卡密改为 null 的 base64 加密结果
-    DbKm.objects.filter(km=key).update(km='bnVsbA==')
+    Km.objects.filter(km=key).update(km='bnVsbA==')
     response = render(request, 'download.html', {'id': id, 'download_times': times + add_times})
     response.set_cookie('msg', 'recharge success', expires=2)
     return response
