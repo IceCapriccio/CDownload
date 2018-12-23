@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 
 class Account(models.Model):
@@ -6,7 +7,7 @@ class Account(models.Model):
     password = models.CharField(max_length=32)
     free = models.IntegerField()
     permission = models.CharField(max_length=5)
-    regtime = models.DateTimeField(db_column='regTime', auto_now=True)  # Field name made lowercase.
+    regtime = models.DateTimeField(db_column='regTime', default=datetime.now())  # Field name made lowercase.
     email = models.CharField(max_length=30, blank=True, null=True)
 
 
@@ -21,7 +22,7 @@ class CSDN_Vip_Account(models.Model):
 class DownloadLog(models.Model):
     username = models.ForeignKey('CSDN_Vip_Account', unique=False)
     url = models.CharField(max_length=100)
-    time = models.DateTimeField(auto_now=True)
+    time = models.DateTimeField(default=datetime.now())
 
 
 class DownloadTimes(models.Model):
